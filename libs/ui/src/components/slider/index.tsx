@@ -18,6 +18,7 @@ const HeroSliderConfigs = {
 };
 
 export const Slider = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [parallaxSwiper, setParallaxSwiper] = useState<any>(null);
   const parallaxAmount = parallaxSwiper ? parallaxSwiper.width * 0.95 : 0;
   const parallaxOpacity = 0.9;
