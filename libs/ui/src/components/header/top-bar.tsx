@@ -14,7 +14,7 @@ const TopBar = () => {
     <div className="py-4 shadow-sm bg-white">
       {/* logo */}
       <div className="container flex items-center justify-between">
-        <Link href="/">
+        <Link href="/" legacyBehavior>
           <img src="/images/logo.svg" alt="" className="w-32" />
         </Link>
         <div className="w-full hidden max-w-lg xl:max-w-xl relative lg:flex items-center">
@@ -47,7 +47,7 @@ const TopBar = () => {
           <Link
             href="/wishlist"
             className="text-center hidden md:inline-block text-gray-700 hover:text-primary transition relative"
-          >
+            legacyBehavior>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-7 w-7 mx-auto mb-1 "
@@ -70,7 +70,7 @@ const TopBar = () => {
           <Link
             href="/cart"
             className="text-center text-gray-700 hover:text-primary transition relative"
-          >
+            legacyBehavior>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-7 w-7 mx-auto mb-1 "
@@ -152,7 +152,7 @@ const TopBar = () => {
                           <Link
                             href="/account"
                             className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300"
-                          >
+                            legacyBehavior>
                             <IdentificationIcon
                               className="w-5 h-5 mr-2"
                               aria-hidden="true"
@@ -166,7 +166,7 @@ const TopBar = () => {
                           <Link
                             href="/account/orders"
                             className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300"
-                          >
+                            legacyBehavior>
                             <GiftIcon
                               className="w-5 h-5 mr-2"
                               aria-hidden="true"
@@ -180,7 +180,7 @@ const TopBar = () => {
                           <Link
                             href="/account/wishlist"
                             className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300"
-                          >
+                            legacyBehavior>
                             <HeartIcon
                               className="w-5 h-5 mr-2"
                               aria-hidden="true"
@@ -194,7 +194,7 @@ const TopBar = () => {
                           <Link
                             href="/cart"
                             className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300"
-                          >
+                            legacyBehavior>
                             <ShoppingBagIcon
                               className="w-5 h-5 mr-2"
                               aria-hidden="true"
