@@ -1,8 +1,10 @@
 import { metaKeywords } from './keywords';
 import type { Metadata } from 'next';
 
+const baseURL = 'https://aafiyah.muttakinhasib.com';
+
 export const defaultMetadata = {
-  metadataBase: new URL('https://aafiyah.muttakinhasib.com'),
+  metadataBase: new URL(baseURL),
   title: {
     default: 'Aafiyah - Islamic E-commerce Shop',
     template: '%s | Aafiyah',
@@ -38,20 +40,20 @@ export const defaultMetadata = {
   themeColor: '#ffffff',
   appLinks: {
     web: {
-      url: 'https://aafiyah.com',
+      url: baseURL,
     },
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://aafiyah.com',
+    url: baseURL,
     siteName: 'Aafiyah',
     title: 'Aafiyah - Islamic E-commerce Shop',
     description:
       'Aafiyah is your one-stop-shop for Islamic clothing, accessories, books, and more. Find a wide range of high-quality products to fulfill your Islamic lifestyle needs.',
     images: [
       {
-        url: 'https://aafiyah.com/images/seo_image.png',
+        url: `${baseURL}/images/seo_image.png`,
         width: 800,
         height: 600,
         alt: 'Aafiyah - Islamic E-commerce Shop',
@@ -74,7 +76,7 @@ export const defaultMetadata = {
       'Aafiyah is your one-stop-shop for Islamic clothing, accessories, books, and more. Find a wide range of high-quality products to fulfill your Islamic lifestyle needs.',
     images: [
       {
-        url: 'https://aafiyah.com/images/seo_image.png',
+        url: `${baseURL}/images/seo_image.png`,
         width: 800,
         height: 600,
         alt: 'Aafiyah - Islamic E-commerce Shop',
