@@ -1,7 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
 import {
   ShoppingBagIcon,
-  UserIcon,
   GiftIcon,
   HeartIcon,
   IdentificationIcon,
