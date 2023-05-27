@@ -47,10 +47,11 @@ export const Slider = () => {
             in provident amet reiciendis quibusdam consectetur
           </p>
           <div className="mt-12">
-            <Link href="/shop">
-              <a className="text-white bg-primary px-8 py-3 font-medium rounded-md border border-primary hover:opacity-90 transition">
-                Shop Now
-              </a>
+            <Link
+              href="/shop"
+              className="text-white bg-primary px-8 py-3 font-medium rounded-md border border-primary hover:opacity-90 transition"
+            >
+              Shop Now
             </Link>
           </div>
         </div>
@@ -78,10 +79,11 @@ export const Slider = () => {
             in provident amet reiciendis quibusdam consectetur
           </p>
           <div className="mt-12">
-            <Link href="/shop">
-              <a className="text-white bg-primary px-8 py-3 font-medium rounded-md border border-primary hover:opacity-90 transition">
-                Shop Now
-              </a>
+            <Link
+              href="/shop"
+              className="text-white bg-primary px-8 py-3 font-medium rounded-md border border-primary hover:opacity-90 transition"
+            >
+              Shop Now
             </Link>
           </div>
         </div>
@@ -109,10 +111,11 @@ export const Slider = () => {
             in provident amet reiciendis quibusdam consectetur
           </p>
           <div className="mt-12">
-            <Link href="/shop">
-              <a className="text-white bg-primary px-8 py-3 font-medium rounded-md border border-primary hover:opacity-90 transition">
-                Shop Now
-              </a>
+            <Link
+              href="/shop"
+              className="text-white bg-primary px-8 py-3 font-medium rounded-md border border-primary hover:opacity-90 transition"
+            >
+              Shop Now
             </Link>
           </div>
         </div>
