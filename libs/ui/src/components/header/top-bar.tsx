@@ -1,4 +1,3 @@
-
 import { Menu, Transition } from '@headlessui/react';
 import {
   ShoppingBagIcon,
@@ -10,17 +9,13 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-
 const TopBar = () => {
-
   return (
     <div className="py-4 shadow-sm bg-white">
       {/* logo */}
       <div className="container flex items-center justify-between">
         <Link href="/">
-          <a>
-            <img src="/images/logo.svg" alt="" className="w-32" />
-          </a>
+          <img src="/images/logo.svg" alt="" className="w-32" />
         </Link>
         <div className="w-full hidden max-w-lg xl:max-w-xl relative lg:flex items-center">
           <span className="absolute top-3 left-4 text-base text-gray-400">
@@ -49,49 +44,51 @@ const TopBar = () => {
           </button>
         </div>
         <div className="flex items-center space-x-4">
-          <Link href="/wishlist">
-            <a className="text-center hidden md:inline-block text-gray-700 hover:text-primary transition relative">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-7 w-7 mx-auto mb-1 "
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1}
-                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                />
-              </svg>
-              <div className="text-xs leading-3">Wish List</div>
-              <span className="absolute right-0 -top-2 w-5 h-5 flex items-center justify-center rounded-full text-white bg-primary text-xs">
-                5
-              </span>
-            </a>
+          <Link
+            href="/wishlist"
+            className="text-center hidden md:inline-block text-gray-700 hover:text-primary transition relative"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-7 w-7 mx-auto mb-1 "
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+              />
+            </svg>
+            <div className="text-xs leading-3">Wish List</div>
+            <span className="absolute right-0 -top-2 w-5 h-5 flex items-center justify-center rounded-full text-white bg-primary text-xs">
+              5
+            </span>
           </Link>
-          <Link href="/cart">
-            <a className="text-center text-gray-700 hover:text-primary transition relative">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-7 w-7 mx-auto mb-1 "
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1}
-                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                />
-              </svg>
-              <div className="text-xs leading-3">Shopping Bag</div>
-              <span className="absolute right-4 -top-2 w-5 h-5 flex items-center justify-center rounded-full text-white bg-primary text-xs">
-                5
-              </span>
-            </a>
+          <Link
+            href="/cart"
+            className="text-center text-gray-700 hover:text-primary transition relative"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-7 w-7 mx-auto mb-1 "
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1}
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
+            </svg>
+            <div className="text-xs leading-3">Shopping Bag</div>
+            <span className="absolute right-4 -top-2 w-5 h-5 flex items-center justify-center rounded-full text-white bg-primary text-xs">
+              5
+            </span>
           </Link>
           <Menu as="div" className="relative">
             {({ open }) => (
@@ -134,15 +131,17 @@ const TopBar = () => {
                           Welcome to Refcart Shop
                         </h3>
                         <div className="flex items-center justify-center my-3 gap-3">
-                          <Link href="/register">
-                            <a className="w-full bg-primary py-1 px-4 text-white rounded uppercase border border-primary text-sm text-center inline-block">
-                              Join
-                            </a>
+                          <Link
+                            href="/register"
+                            className="w-full bg-primary py-1 px-4 text-white rounded uppercase border border-primary text-sm text-center inline-block"
+                          >
+                            Join
                           </Link>
-                          <Link href="/login">
-                            <a className="w-full bg-white py-1 px-4 text-primary rounded uppercase border border-primary text-sm text-center inline-block">
-                              Sign in
-                            </a>
+                          <Link
+                            href="/login"
+                            className="w-full bg-white py-1 px-4 text-primary rounded uppercase border border-primary text-sm text-center inline-block"
+                          >
+                            Sign in
                           </Link>
                         </div>
                       </div>
@@ -150,53 +149,57 @@ const TopBar = () => {
                     <div className="py-2">
                       <Menu.Item>
                         {({ active }) => (
-                          <Link href="/account">
-                            <a className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300">
-                              <IdentificationIcon
-                                className="w-5 h-5 mr-2"
-                                aria-hidden="true"
-                              />
-                              My Account
-                            </a>
+                          <Link
+                            href="/account"
+                            className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300"
+                          >
+                            <IdentificationIcon
+                              className="w-5 h-5 mr-2"
+                              aria-hidden="true"
+                            />
+                            My Account
                           </Link>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <Link href="/account/orders">
-                            <a className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300">
-                              <GiftIcon
-                                className="w-5 h-5 mr-2"
-                                aria-hidden="true"
-                              />
-                              My Orders
-                            </a>
+                          <Link
+                            href="/account/orders"
+                            className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300"
+                          >
+                            <GiftIcon
+                              className="w-5 h-5 mr-2"
+                              aria-hidden="true"
+                            />
+                            My Orders
                           </Link>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <Link href="/account/wishlist">
-                            <a className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300">
-                              <HeartIcon
-                                className="w-5 h-5 mr-2"
-                                aria-hidden="true"
-                              />
-                              My Wishlist
-                            </a>
+                          <Link
+                            href="/account/wishlist"
+                            className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300"
+                          >
+                            <HeartIcon
+                              className="w-5 h-5 mr-2"
+                              aria-hidden="true"
+                            />
+                            My Wishlist
                           </Link>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <Link href="/cart">
-                            <a className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300">
-                              <ShoppingBagIcon
-                                className="w-5 h-5 mr-2"
-                                aria-hidden="true"
-                              />
-                              My Cart
-                            </a>
+                          <Link
+                            href="/cart"
+                            className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300"
+                          >
+                            <ShoppingBagIcon
+                              className="w-5 h-5 mr-2"
+                              aria-hidden="true"
+                            />
+                            My Cart
                           </Link>
                         )}
                       </Menu.Item>
