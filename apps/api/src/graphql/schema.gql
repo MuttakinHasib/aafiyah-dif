@@ -21,7 +21,7 @@ input CreateUserInput {
   email: String!
   name: String!
   password: String!
-  role: String!
+  role: String
 }
 
 """
@@ -32,7 +32,7 @@ scalar DateTime
 type Mutation {
   createAuth(createAuthInput: CreateAuthInput!): Auth!
   createProduct(createProductInput: CreateProductInput!): Product!
-  createUser(createUserInput: CreateUserInput!): User!
+  createUser(createUserInput: CreateUserInput!): String!
   removeAuth(id: Int!): Auth!
   removeProduct(id: Int!): Product!
   removeUser(id: Int!): User!
@@ -81,6 +81,6 @@ type User {
   id: ID!
   name: String!
   password: String!
-  role: String!
+  role: String
   updated_at: DateTime!
 }

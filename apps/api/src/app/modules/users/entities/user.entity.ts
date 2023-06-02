@@ -13,7 +13,10 @@ import {
 @Entity()
 @ObjectType()
 export class User extends CoreEntity {
-  @Column({default: ''})
+  @Column({
+    default:
+      'https://res.cloudinary.com/muttakinhasib/image/upload/v1611336104/avatar/user_qcrqny.svg',
+  })
   @Field()
   @IsUrl()
   @IsOptional()
@@ -38,10 +41,10 @@ export class User extends CoreEntity {
   password: string;
 
   @Column({ default: 'customer' })
-  @Field()
+  @Field({ nullable: true })
   @IsString()
-  @IsNotEmpty()
-  role: string;
+  @IsOptional()
+  role?: string;
 
   async comparePassword(password: string): Promise<boolean> {
     return await bcrypt.compare(password, this.password);

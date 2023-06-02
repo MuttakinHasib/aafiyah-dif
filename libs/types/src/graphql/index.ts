@@ -20,7 +20,7 @@ export interface CreateUserInput {
     email: string;
     name: string;
     password: string;
-    role: string;
+    role?: Nullable<string>;
 }
 
 export interface UpdateAuthInput {
@@ -48,7 +48,7 @@ export interface Auth {
 export interface IMutation {
     createAuth(createAuthInput: CreateAuthInput): Auth | Promise<Auth>;
     createProduct(createProductInput: CreateProductInput): Product | Promise<Product>;
-    createUser(createUserInput: CreateUserInput): User | Promise<User>;
+    createUser(createUserInput: CreateUserInput): string | Promise<string>;
     removeAuth(id: number): Auth | Promise<Auth>;
     removeProduct(id: number): Product | Promise<Product>;
     removeUser(id: number): User | Promise<User>;
@@ -76,7 +76,7 @@ export interface User {
     id: string;
     name: string;
     password: string;
-    role: string;
+    role?: Nullable<string>;
     updated_at: DateTime;
 }
 
