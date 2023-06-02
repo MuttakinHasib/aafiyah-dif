@@ -1,26 +1,26 @@
-import { Injectable } from '@nestjs/common';
-import { CreateAuthInput } from './dto/create-auth.input';
-import { UpdateAuthInput } from './dto/update-auth.input';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
+import { UsersService } from '../users/users.service';
+import { User } from '../users/entities/user.entity';
 
 @Injectable()
 export class AuthService {
-  create(createAuthInput: CreateAuthInput) {
-    return 'This action adds a new auth';
-  }
+  constructor(private readonly usersService: UsersService) {}
 
-  findAll() {
-    return `This action returns all auth`;
-  }
+  async validate(
+    email: string,
+    password: string
+  ): Promise<Omit<User, 'password'>> {
+    const user = await this.usersService.findOne({ email });
+    if (!user) throw new NotFoundException('User does not exist');
 
-  findOne(id: number) {
-    return `This action returns a #${id} auth`;
-  }
-
-  update(id: number, updateAuthInput: UpdateAuthInput) {
-    return `This action updates a #${id} auth`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
+    if (await user.comparePassword(password)) {
+      delete user.password;
+      return user;
+    }
+    throw new UnauthorizedException('Password is incorrect');
   }
 }

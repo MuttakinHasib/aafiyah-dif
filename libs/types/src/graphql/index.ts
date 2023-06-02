@@ -8,10 +8,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export interface CreateAuthInput {
-    exampleField: number;
-}
-
 export interface CreateProductInput {
     exampleField: number;
 }
@@ -23,9 +19,9 @@ export interface CreateUserInput {
     role?: Nullable<string>;
 }
 
-export interface UpdateAuthInput {
-    exampleField?: Nullable<number>;
-    id: number;
+export interface LoginInput {
+    email: string;
+    password: string;
 }
 
 export interface UpdateProductInput {
@@ -41,18 +37,17 @@ export interface UpdateUserInput {
     role?: Nullable<string>;
 }
 
-export interface Auth {
-    exampleField: number;
+export interface LoginResponse {
+    message: string;
+    user: UserWithoutPassword;
 }
 
 export interface IMutation {
-    createAuth(createAuthInput: CreateAuthInput): Auth | Promise<Auth>;
     createProduct(createProductInput: CreateProductInput): Product | Promise<Product>;
     createUser(createUserInput: CreateUserInput): string | Promise<string>;
-    removeAuth(id: number): Auth | Promise<Auth>;
+    login(loginInput: LoginInput): LoginResponse | Promise<LoginResponse>;
     removeProduct(id: number): Product | Promise<Product>;
     removeUser(id: number): User | Promise<User>;
-    updateAuth(updateAuthInput: UpdateAuthInput): Auth | Promise<Auth>;
     updateProduct(updateProductInput: UpdateProductInput): Product | Promise<Product>;
     updateUser(updateUserInput: UpdateUserInput): User | Promise<User>;
 }
@@ -62,11 +57,12 @@ export interface Product {
 }
 
 export interface IQuery {
-    auth(id: number): Auth | Promise<Auth>;
+    logout(): string | Promise<string>;
     product(id: number): Product | Promise<Product>;
     products(): Product[] | Promise<Product[]>;
     user(id: number): User | Promise<User>;
     users(): User[] | Promise<User[]>;
+    whoAmI(): UserWithoutPassword | Promise<UserWithoutPassword>;
 }
 
 export interface User {
@@ -76,6 +72,16 @@ export interface User {
     id: string;
     name: string;
     password: string;
+    role?: Nullable<string>;
+    updated_at: DateTime;
+}
+
+export interface UserWithoutPassword {
+    avatar: string;
+    created_at: DateTime;
+    email: string;
+    id: string;
+    name: string;
     role?: Nullable<string>;
     updated_at: DateTime;
 }

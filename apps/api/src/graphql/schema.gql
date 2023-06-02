@@ -2,16 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Auth {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-input CreateAuthInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
 input CreateProductInput {
   """Example field (placeholder)"""
   exampleField: Int!
@@ -29,14 +19,22 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type LoginResponse {
+  message: String!
+  user: UserWithoutPassword!
+}
+
 type Mutation {
-  createAuth(createAuthInput: CreateAuthInput!): Auth!
   createProduct(createProductInput: CreateProductInput!): Product!
   createUser(createUserInput: CreateUserInput!): String!
-  removeAuth(id: Int!): Auth!
+  login(loginInput: LoginInput!): LoginResponse!
   removeProduct(id: Int!): Product!
   removeUser(id: Int!): User!
-  updateAuth(updateAuthInput: UpdateAuthInput!): Auth!
   updateProduct(updateProductInput: UpdateProductInput!): Product!
   updateUser(updateUserInput: UpdateUserInput!): User!
 }
@@ -47,17 +45,12 @@ type Product {
 }
 
 type Query {
-  auth(id: Int!): Auth!
+  logout: String!
   product(id: Int!): Product!
   products: [Product!]!
   user(id: Int!): User!
   users: [User!]!
-}
-
-input UpdateAuthInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+  whoAmI: UserWithoutPassword!
 }
 
 input UpdateProductInput {
@@ -81,6 +74,16 @@ type User {
   id: ID!
   name: String!
   password: String!
+  role: String
+  updated_at: DateTime!
+}
+
+type UserWithoutPassword {
+  avatar: String!
+  created_at: DateTime!
+  email: String!
+  id: ID!
+  name: String!
   role: String
   updated_at: DateTime!
 }

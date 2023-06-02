@@ -8,4 +8,8 @@ export class ConfigurationService {
   get POSTGRES_DB_URL() {
     return this.configService.get<string>('POSTGRES_DB_URL');
   }
+
+  get SESSION_SECRET_KEY() {
+    return this.configService.get<string>('SESSION_SECRET_KEY');
+  }
 }
