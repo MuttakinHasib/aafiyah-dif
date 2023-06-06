@@ -1,0 +1,4 @@
+# overwrite: true
+# schema: 'apps/api/src/graphql/schema.gql'
+# documents:
+#   - 'apps/api/src/**/*.graphql'

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "nx run-many --target=serve --projects=web,api --parallel"
+    "dev": "nx run-many --target=serve --projects=web,api --parallel",
+    "gen:graphql-client": "graphql-codegen"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,7 @@
     "@nestjs/typeorm": "^9.0.1",
     "@swc/helpers": "~0.5.0",
     "@tailwindcss/forms": "^0.5.3",
+    "@tanstack/react-query": "^4.29.12",
     "axios": "^1.0.0",
     "bcrypt": "^5.1.0",
     "class-transformer": "^0.5.1",
@@ -31,6 +33,7 @@
     "connect-pg-simple": "^8.0.0",
     "express-session": "^1.17.3",
     "graphql": "^16.6.0",
+    "graphql-request": "^6.1.0",
     "helmet": "^7.0.0",
     "joi": "^17.9.2",
     "next": "^13.4.4",
@@ -49,6 +52,13 @@
     "typeorm": "^0.3.16"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^4.0.1",
+    "@graphql-codegen/near-operation-file-preset": "^2.5.0",
+    "@graphql-codegen/typed-document-node": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.0",
+    "@graphql-codegen/typescript-graphql-request": "^5.0.0",
+    "@graphql-codegen/typescript-operations": "^4.0.0",
+    "@graphql-codegen/typescript-react-query": "^4.1.0",
     "@nestjs/schematics": "^9.1.0",
     "@nestjs/testing": "^9.1.1",
     "@nx/cypress": "16.3.1",

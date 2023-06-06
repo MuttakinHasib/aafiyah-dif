@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://www.graphql-code-generator.com/config.schema.json": "file:///home/hasib/Development/Projects/aafiyah/tools/graphql-codegen/codegen.yml"
+    }
+}
