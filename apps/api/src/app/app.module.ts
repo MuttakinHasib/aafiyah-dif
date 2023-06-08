@@ -30,6 +30,15 @@ import { join } from 'path';
         path: join(process.cwd(), 'libs/types/src/graphql/index.ts'),
       },
       sortSchema: true,
+      playground: {
+        settings: {
+          'request.credentials': 'include',
+        },
+      },
+      cors: {
+        credentials: true,
+        origin: true,
+      },
     }),
     UsersModule,
     AuthModule,

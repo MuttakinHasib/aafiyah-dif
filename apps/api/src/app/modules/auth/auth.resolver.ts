@@ -21,7 +21,7 @@ export class AuthResolver {
   }
 
   @Query(() => UserWithoutPassword)
-  // @UseGuards(AuthenticatedGuard)
+  @UseGuards(AuthenticatedGuard)
   whoAmI(@CurrentUser() user: UserWithoutPassword) {
     return user;
   }

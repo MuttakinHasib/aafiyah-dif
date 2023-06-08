@@ -8,7 +8,6 @@ export class SessionAuthGuard extends AuthGuard('local') {
     const ctx = GqlExecutionContext.create(context);
     const request = ctx.getContext().req;
     request.user = ctx.getContext().user;
-    console.log(request);
     await super.logIn(request);
     return request ? true : false;
   }
