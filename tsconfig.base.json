@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@aafiyah/common": ["libs/common/src/index.ts"],
+      "@aafiyah/graphql": ["libs/graphql/src/index.ts"],
       "@aafiyah/types": ["libs/types/src/index.ts"],
       "ui": ["libs/ui/src/index.ts"]
     }

@@ -23,22 +23,22 @@ import { join } from 'path';
       }),
       inject: [ConfigurationService],
     }),
-    GraphQLModule.forRoot({
+    GraphQLModule.forRootAsync({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'apps/api/src/graphql/schema.gql'),
-      definitions: {
-        path: join(process.cwd(), 'libs/types/src/graphql/index.ts'),
-      },
-      sortSchema: true,
-      playground: {
-        settings: {
-          'request.credentials': 'include',
+      useFactory: async (configurationService: ConfigurationService) => ({
+        autoSchemaFile: join(process.cwd(), 'apps/api/src/graphql/schema.gql'),
+        sortSchema: true,
+        playground: {
+          settings: {
+            'request.credentials': 'include',
+          },
         },
-      },
-      cors: {
-        credentials: true,
-        origin: true,
-      },
+        // cors: {
+        //   credentials: true,
+        //   origin: [configurationService.WEB_URL],
+        // },
+      }),
+      inject: [ConfigurationService],
     }),
     UsersModule,
     AuthModule,

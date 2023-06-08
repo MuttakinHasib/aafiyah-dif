@@ -1,7 +1,11 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { useAuth } from '../../hooks/auth/useAuth';
 
 const LoginScreen = () => {
+  const { register, login } = useAuth();
   return (
     <div className="container py-16">
       <div className="max-w-lg mx-auto shadow px-6 py-7 rounded overflow-hidden">
@@ -9,7 +13,7 @@ const LoginScreen = () => {
         <p className="text-gray-600 mb-6 text-sm">
           Login if you are a returning customer
         </p>
-        <form>
+        <form onSubmit={login}>
           <div className="space-y-4">
             <div>
               <label htmlFor="email" className="text-gray-600 mb-2 block">
@@ -20,7 +24,7 @@ const LoginScreen = () => {
                 id="email"
                 className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-gray-500 placeholder-gray-400"
                 placeholder="Enter your email address"
-                // {...register('email', { required: true })}
+                {...register('email', { required: true })}
               />
             </div>
             <div>
@@ -32,7 +36,7 @@ const LoginScreen = () => {
                 id="password"
                 className="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-gray-500 placeholder-gray-400"
                 placeholder="Enter your password"
-                // {...register('password', { required: true })}
+                {...register('password', { required: true })}
               />
             </div>
           </div>

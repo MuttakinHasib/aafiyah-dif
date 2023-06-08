@@ -1,0 +1,12 @@
+query Profile {
+  whoAmI {
+    avatar
+    created_at
+    email
+    id
+    name
+    role
+    updated_at
+    __typename
+  }
+}

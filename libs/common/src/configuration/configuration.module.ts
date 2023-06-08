@@ -11,6 +11,9 @@ import * as Joi from 'joi';
       envFilePath: '.env',
       validationSchema: Joi.object({
         POSTGRES_DB_URL: Joi.string().required(),
+        SESSION_SECRET_KEY: Joi.string().required(),
+        NX_WEB_URL: Joi.string().required(),
+        NX_API_URL: Joi.string().required(),
       }),
     }),
   ],

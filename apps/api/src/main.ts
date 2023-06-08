@@ -15,6 +15,11 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
 
+  app.enableCors({
+    credentials: true,
+    origin: [configurationService.WEB_URL],
+  });
+
   app.use(
     session({
       secret: configurationService.SESSION_SECRET_KEY,
