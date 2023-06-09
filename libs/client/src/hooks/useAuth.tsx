@@ -1,17 +1,22 @@
 import {
   CreateUserInput,
   useLoginMutation,
-  useProfileQuery,
+  useLogoutMutation,
+  useMeQuery,
   useRegisterMutation,
 } from '@aafiyah/graphql';
 import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import useLocalStorage from 'use-local-storage';
 
 export const useAuth = () => {
+  const [loggedIn, setLoggedIn] = useLocalStorage('loggedIn', false);
   const { mutateAsync: registerMutation } = useRegisterMutation();
   const { mutateAsync: loginMutation } = useLoginMutation();
+  const { mutateAsync: logoutMutation } = useLogoutMutation();
+
   const queryClient = useQueryClient();
   const { push } = useRouter();
 
@@ -40,7 +45,8 @@ export const useAuth = () => {
       toast.promise(loginMutation({ loginInput: data }), {
         loading: 'Logging in...',
         success: ({ login: { message } }) => {
-          queryClient.invalidateQueries(useProfileQuery.getKey());
+          setLoggedIn(true);
+          queryClient.invalidateQueries(useMeQuery.getKey());
           push('/account');
           return <b>{message}</b>;
         },
@@ -51,5 +57,21 @@ export const useAuth = () => {
     }
   });
 
-  return { register, signup, login, errors };
+  const logout = async () => {
+    try {
+      toast.promise(logoutMutation({}), {
+        loading: 'Logging out...',
+        success: ({ logout: { message } }) => {
+          push('/');
+          queryClient.resetQueries(useMeQuery.getKey());
+          return <b>{message}</b>;
+        },
+        error: 'Failed to Logout!',
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return { register, signup, login, errors, logout, loggedIn, setLoggedIn };
 };

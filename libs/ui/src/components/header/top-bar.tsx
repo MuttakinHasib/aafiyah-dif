@@ -1,6 +1,7 @@
 /* eslint-disable @nx/enforce-module-boundaries */
 'use client';
-import { useProfileQuery } from '@aafiyah/graphql';
+import { useAuth } from '@aafiyah/client';
+import { useMeQuery } from '@aafiyah/graphql';
 import { Menu, Transition } from '@headlessui/react';
 import {
   ShoppingBagIcon,
@@ -10,10 +11,9 @@ import {
   ArrowRightOnRectangleIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { useAuth } from '../../hooks';
 
 const TopBar = () => {
-  const { data } = useProfileQuery();
+  const { data } = useMeQuery();
   const { logout } = useAuth();
 
   return (

@@ -1,4 +1,4 @@
-query profile {
+query me {
   me {
     avatar
     created_at

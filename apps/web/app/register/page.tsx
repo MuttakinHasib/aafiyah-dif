@@ -1,7 +1,7 @@
 'use client';
 
+import { useAuth } from '@aafiyah/client';
 import Link from 'next/link';
-import { useAuth } from '../hooks/auth/useAuth';
 
 const RegisterScreen = () => {
   const { register, signup } = useAuth();

@@ -1,15 +1,12 @@
 'use client';
 import { pick } from 'lodash';
 import moment from 'moment';
-import {
-  UserWithoutPassword,
-  useProfileQuery,
-  useUpdateUserMutation,
-} from '@aafiyah/graphql';
+import { UserWithoutPassword, useMeQuery, useUpdateUserMutation } from '@aafiyah/graphql';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useQueryClient } from '@tanstack/react-query';
+import { useProfileQuery } from './useProfileQuery';
 
 export const useProfile = () => {
   const { data } = useProfileQuery();
@@ -44,7 +41,7 @@ export const useProfile = () => {
       toast.promise(mutateAsync({ updateUserInput: data }), {
         loading: 'Updating Profile...',
         success: ({ updateUser }) => {
-          queryClient.invalidateQueries(useProfileQuery.getKey());
+          queryClient.invalidateQueries(useMeQuery.getKey());
           return <b>{updateUser}</b>;
         },
         error: (data) => <b>{data.message}</b>,

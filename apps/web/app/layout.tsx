@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import '../styles/global.css';
 import Providers from './providers';
-import { useProfileQuery } from '@aafiyah/graphql';
+import { useMeQuery } from '@aafiyah/graphql';
 import { Hydrate, dehydrate } from '@tanstack/react-query';
 import { getQueryClient } from '@aafiyah/client';
 import { Header, defaultMetadata } from '@aafiyah/ui';
@@ -25,8 +25,8 @@ export default async function RootLayout({
   const headersInstance = headers();
   const queryClient = getQueryClient();
   queryClient.prefetchQuery(
-    useProfileQuery.getKey(),
-    useProfileQuery.fetcher({}, { cookie: headersInstance.get('cookie') || '' })
+    useMeQuery.getKey(),
+    useMeQuery.fetcher({}, { cookie: headersInstance.get('cookie') || '' })
   );
   const dehydratedState = dehydrate(queryClient);
   return (

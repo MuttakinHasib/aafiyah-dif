@@ -207,9 +207,9 @@ export type UpdateUserMutation = {
   updateUser: string;
 };
 
-export type ProfileQueryVariables = Exact<{ [key: string]: never }>;
+export type MeQueryVariables = Exact<{ [key: string]: never }>;
 
-export type ProfileQuery = {
+export type MeQuery = {
   __typename?: 'Query';
   me: {
     __typename: 'UserWithoutPassword';
@@ -368,8 +368,8 @@ useUpdateUserMutation.fetcher = (
     variables,
     options
   );
-export const ProfileDocument = /*#__PURE__*/ `
-    query profile {
+export const MeDocument = /*#__PURE__*/ `
+    query me {
   me {
     avatar
     created_at
@@ -385,24 +385,19 @@ export const ProfileDocument = /*#__PURE__*/ `
   }
 }
     `;
-export const useProfileQuery = <TData = ProfileQuery, TError = unknown>(
-  variables?: ProfileQueryVariables,
-  options?: UseQueryOptions<ProfileQuery, TError, TData>
+export const useMeQuery = <TData = MeQuery, TError = unknown>(
+  variables?: MeQueryVariables,
+  options?: UseQueryOptions<MeQuery, TError, TData>
 ) =>
-  useQuery<ProfileQuery, TError, TData>(
-    variables === undefined ? ['profile'] : ['profile', variables],
-    fetcher<ProfileQuery, ProfileQueryVariables>(ProfileDocument, variables),
+  useQuery<MeQuery, TError, TData>(
+    variables === undefined ? ['me'] : ['me', variables],
+    fetcher<MeQuery, MeQueryVariables>(MeDocument, variables),
     options
   );
 
-useProfileQuery.getKey = (variables?: ProfileQueryVariables) =>
-  variables === undefined ? ['profile'] : ['profile', variables];
-useProfileQuery.fetcher = (
-  variables?: ProfileQueryVariables,
+useMeQuery.getKey = (variables?: MeQueryVariables) =>
+  variables === undefined ? ['me'] : ['me', variables];
+useMeQuery.fetcher = (
+  variables?: MeQueryVariables,
   options?: RequestInit['headers']
-) =>
-  fetcher<ProfileQuery, ProfileQueryVariables>(
-    ProfileDocument,
-    variables,
-    options
-  );
+) => fetcher<MeQuery, MeQueryVariables>(MeDocument, variables, options);

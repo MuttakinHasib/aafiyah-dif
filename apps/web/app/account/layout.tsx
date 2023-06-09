@@ -1,6 +1,6 @@
 'use client';
+
 import { startCase } from 'lodash';
-import { useProfileQuery } from '@aafiyah/graphql';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { useMediaQuery } from '@react-hook/media-query';
@@ -8,6 +8,8 @@ import { Bars4Icon } from '@heroicons/react/24/outline';
 import { Transition } from '@headlessui/react';
 import { AccountSidebar, BreadCrumbs } from '@aafiyah/ui';
 import { usePathname } from 'next/navigation';
+import { useProfileQuery } from '@aafiyah/client';
+
 type Props = React.PropsWithChildren<object>;
 
 const AccountLayout = (props: Props) => {

@@ -2,7 +2,7 @@
 'use client';
 import Link from 'next/link';
 import { statics } from '../../configs';
-import { useProfileQuery } from '@aafiyah/graphql';
+import { useProfileQuery } from '@aafiyah/client';
 const { categories, navLinks } = statics;
 
 const NavBar = () => {
