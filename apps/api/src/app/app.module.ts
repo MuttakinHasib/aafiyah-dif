@@ -25,7 +25,7 @@ import { join } from 'path';
     }),
     GraphQLModule.forRootAsync({
       driver: ApolloDriver,
-      useFactory: async (configurationService: ConfigurationService) => ({
+      useFactory: async () => ({
         autoSchemaFile: join(process.cwd(), 'apps/api/src/graphql/schema.gql'),
         sortSchema: true,
         playground: {
@@ -39,7 +39,6 @@ import { join } from 'path';
         //   origin: [configurationService.WEB_URL],
         // },
       }),
-      inject: [ConfigurationService],
     }),
     UsersModule,
     AuthModule,

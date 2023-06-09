@@ -2,11 +2,12 @@ import { Toaster } from 'react-hot-toast';
 import { headers } from 'next/headers';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-import { Header, defaultMetadata } from 'ui';
 import '../styles/global.css';
 import Providers from './providers';
-import getQueryClient from './utils/getQueryClient';
 import { useProfileQuery } from '@aafiyah/graphql';
+import { Hydrate, dehydrate } from '@tanstack/react-query';
+import { getQueryClient } from '@aafiyah/client';
+import { Header, defaultMetadata } from '@aafiyah/ui';
 
 const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -22,17 +23,21 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const headersInstance = headers();
-  await getQueryClient().prefetchQuery(
+  const queryClient = getQueryClient();
+  queryClient.prefetchQuery(
     useProfileQuery.getKey(),
     useProfileQuery.fetcher({}, { cookie: headersInstance.get('cookie') || '' })
   );
+  const dehydratedState = dehydrate(queryClient);
   return (
     <html lang="en">
       <body className={poppins.className}>
         <Providers>
-          <Header />
-          {children}
-          <Toaster />
+          <Hydrate state={dehydratedState}>
+            <Header />
+            {children}
+            <Toaster />
+          </Hydrate>
         </Providers>
       </body>
     </html>

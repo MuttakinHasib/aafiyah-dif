@@ -13,7 +13,7 @@ const config: CodegenConfig = {
       config: {
         // fetcher: 'graphql-request',
         fetcher: {
-          func: 'ui#fetcher',
+          func: '../configs#fetcher',
           // func: 'ui#customFetcher',
 
           fetchParams: {

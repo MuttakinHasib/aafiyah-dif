@@ -4,7 +4,7 @@ import {
   UseMutationOptions,
   UseQueryOptions,
 } from '@tanstack/react-query';
-import { fetcher } from 'ui';
+import { fetcher } from '../configs';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -73,7 +73,7 @@ export type Mutation = {
   removeProduct: Product;
   removeUser: User;
   updateProduct: Product;
-  updateUser: User;
+  updateUser: Scalars['String']['output'];
 };
 
 export type MutationCreateProductArgs = {
@@ -134,21 +134,30 @@ export type UpdateProductInput = {
 };
 
 export type UpdateUserInput = {
+  avatar?: InputMaybe<Scalars['String']['input']>;
+  created_at?: InputMaybe<Scalars['DateTime']['input']>;
+  dob?: InputMaybe<Scalars['DateTime']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
-  id: Scalars['Int']['input'];
+  gender?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   password?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
   role?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type User = {
   __typename?: 'User';
   avatar: Scalars['String']['output'];
   created_at: Scalars['DateTime']['output'];
+  dob?: Maybe<Scalars['DateTime']['output']>;
   email: Scalars['String']['output'];
+  gender?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
   password: Scalars['String']['output'];
+  phone?: Maybe<Scalars['String']['output']>;
   role?: Maybe<Scalars['String']['output']>;
   updated_at: Scalars['DateTime']['output'];
 };
@@ -157,9 +166,12 @@ export type UserWithoutPassword = {
   __typename?: 'UserWithoutPassword';
   avatar: Scalars['String']['output'];
   created_at: Scalars['DateTime']['output'];
+  dob?: Maybe<Scalars['DateTime']['output']>;
   email: Scalars['String']['output'];
+  gender?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
+  phone?: Maybe<Scalars['String']['output']>;
   role?: Maybe<Scalars['String']['output']>;
   updated_at: Scalars['DateTime']['output'];
 };
@@ -186,6 +198,15 @@ export type RegisterMutationVariables = Exact<{
 
 export type RegisterMutation = { __typename?: 'Mutation'; createUser: string };
 
+export type UpdateUserMutationVariables = Exact<{
+  updateUserInput: UpdateUserInput;
+}>;
+
+export type UpdateUserMutation = {
+  __typename?: 'Mutation';
+  updateUser: string;
+};
+
 export type ProfileQueryVariables = Exact<{ [key: string]: never }>;
 
 export type ProfileQuery = {
@@ -198,6 +219,9 @@ export type ProfileQuery = {
     id: string;
     name: string;
     role?: string | null;
+    dob?: any | null;
+    gender?: string | null;
+    phone?: string | null;
     updated_at: any;
   };
 };
@@ -306,6 +330,44 @@ useRegisterMutation.fetcher = (
     variables,
     options
   );
+export const UpdateUserDocument = /*#__PURE__*/ `
+    mutation updateUser($updateUserInput: UpdateUserInput!) {
+  updateUser(updateUserInput: $updateUserInput)
+}
+    `;
+export const useUpdateUserMutation = <TError = unknown, TContext = unknown>(
+  options?: UseMutationOptions<
+    UpdateUserMutation,
+    TError,
+    UpdateUserMutationVariables,
+    TContext
+  >
+) =>
+  useMutation<
+    UpdateUserMutation,
+    TError,
+    UpdateUserMutationVariables,
+    TContext
+  >(
+    ['updateUser'],
+    (variables?: UpdateUserMutationVariables) =>
+      fetcher<UpdateUserMutation, UpdateUserMutationVariables>(
+        UpdateUserDocument,
+        variables
+      )(),
+    options
+  );
+useUpdateUserMutation.getKey = () => ['updateUser'];
+
+useUpdateUserMutation.fetcher = (
+  variables: UpdateUserMutationVariables,
+  options?: RequestInit['headers']
+) =>
+  fetcher<UpdateUserMutation, UpdateUserMutationVariables>(
+    UpdateUserDocument,
+    variables,
+    options
+  );
 export const ProfileDocument = /*#__PURE__*/ `
     query profile {
   me {
@@ -315,6 +377,9 @@ export const ProfileDocument = /*#__PURE__*/ `
     id
     name
     role
+    dob
+    gender
+    phone
     updated_at
     __typename
   }

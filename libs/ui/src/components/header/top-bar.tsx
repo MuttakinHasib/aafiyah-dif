@@ -1,3 +1,5 @@
+/* eslint-disable @nx/enforce-module-boundaries */
+'use client';
 import { useProfileQuery } from '@aafiyah/graphql';
 import { Menu, Transition } from '@headlessui/react';
 import {

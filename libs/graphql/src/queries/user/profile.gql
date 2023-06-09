@@ -6,6 +6,9 @@ query profile {
     id
     name
     role
+    dob
+    gender
+    phone
     updated_at
     __typename
   }

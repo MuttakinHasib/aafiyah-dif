@@ -1,2 +1,1 @@
-export * from './useFetcher'
-export * from './useAuth'
+export * from './useAuth';

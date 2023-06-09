@@ -3,7 +3,6 @@ import { NestFactory } from '@nestjs/core';
 import passport from 'passport';
 import session from 'express-session';
 import PostgresStore from 'connect-pg-simple';
-import  cookieParser from 'cookie-parser';
 import { AppModule } from './app/app.module';
 import { ConfigurationService } from '@aafiyah/common';
 import 'colors';
@@ -20,7 +19,7 @@ async function bootstrap() {
     credentials: true,
     origin: [configurationService.WEB_URL],
   });
-  app.use(cookieParser())
+  
   app.use(
     session({
       secret: configurationService.SESSION_SECRET_KEY,

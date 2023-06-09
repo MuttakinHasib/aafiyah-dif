@@ -41,7 +41,7 @@ type Mutation {
   removeProduct(id: Int!): Product!
   removeUser(id: Int!): User!
   updateProduct(updateProductInput: UpdateProductInput!): Product!
-  updateUser(updateUserInput: UpdateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): String!
 }
 
 type Product {
@@ -64,20 +64,29 @@ input UpdateProductInput {
 }
 
 input UpdateUserInput {
+  avatar: String
+  created_at: DateTime
+  dob: DateTime
   email: String
-  id: Int!
+  gender: String
+  id: ID
   name: String
   password: String
+  phone: String
   role: String
+  updated_at: DateTime
 }
 
 type User {
   avatar: String!
   created_at: DateTime!
+  dob: DateTime
   email: String!
+  gender: String
   id: ID!
   name: String!
   password: String!
+  phone: String
   role: String
   updated_at: DateTime!
 }
@@ -85,9 +94,12 @@ type User {
 type UserWithoutPassword {
   avatar: String!
   created_at: DateTime!
+  dob: DateTime
   email: String!
+  gender: String
   id: ID!
   name: String!
+  phone: String
   role: String
   updated_at: DateTime!
 }

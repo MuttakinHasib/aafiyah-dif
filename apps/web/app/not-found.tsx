@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { BreadCrumbs } from 'ui';
+import { BreadCrumbs } from '@aafiyah/ui';
 
 const NotFoundScreen = () => {
   return (

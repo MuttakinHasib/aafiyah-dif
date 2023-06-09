@@ -1,11 +1,16 @@
-'use client';
-import { useProfileQuery } from '@aafiyah/graphql';
+import { Metadata } from 'next';
 import React from 'react';
 
-type Props = {};
+export const metadata: Metadata = {
+  title: 'Dashboard',
+};
 
-const Dashboard = (props: Props) => {
-  return <div><p>hi</p></div>;
+const Dashboard = () => {
+  return (
+    <div>
+      <p>hi</p>
+    </div>
+  );
 };
 
 export default Dashboard;

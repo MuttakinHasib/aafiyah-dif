@@ -1,10 +1,12 @@
+/* eslint-disable @nx/enforce-module-boundaries */
+'use client';
 import Link from 'next/link';
 import { statics } from '../../configs';
 import { useProfileQuery } from '@aafiyah/graphql';
 const { categories, navLinks } = statics;
 
 const NavBar = () => {
-  const {data} = useProfileQuery()
+  const { data } = useProfileQuery();
   return (
     <nav className="hidden md:block bg-gray-800">
       <div className="container flex items-center">

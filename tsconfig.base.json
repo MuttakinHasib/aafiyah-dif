@@ -15,10 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@aafiyah/client": ["libs/client/src/index.ts"],
       "@aafiyah/common": ["libs/common/src/index.ts"],
       "@aafiyah/graphql": ["libs/graphql/src/index.ts"],
       "@aafiyah/types": ["libs/types/src/index.ts"],
-      "ui": ["libs/ui/src/index.ts"]
+      "@aafiyah/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

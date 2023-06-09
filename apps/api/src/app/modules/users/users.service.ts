@@ -30,8 +30,9 @@ export class UsersService {
     return await this.userRepository.findOne({ where: query });
   }
 
-  update(id: number, updateUserInput: UpdateUserInput) {
-    return `This action updates a #${id} user`;
+  async update(id: string, updateUserInput: UpdateUserInput) {
+    await this.userRepository.save({ id, ...updateUserInput });
+    return 'User profile has been updated';
   }
 
   async remove(id: string) {

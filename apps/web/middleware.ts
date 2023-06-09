@@ -3,12 +3,18 @@ import { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const userToken = request.cookies.get('connect.sid')?.value;
-  if (!userToken) {
+
+  if (request.nextUrl.pathname.startsWith('/account') && !userToken) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
+
+  if (['/login', '/register'].includes(request.nextUrl.pathname) && userToken) {
+    return NextResponse.redirect(new URL('/account', request.url));
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: '/account/:path*',
+  matcher: ['/login', '/register', '/account/:path*'],
 };

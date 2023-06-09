@@ -1,15 +1,8 @@
-import {
-  Resolver,
-  Mutation,
-  Args,
-  Query,
-  Context,
-  GqlContextType,
-} from '@nestjs/graphql';
+import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
 import { LoginInput, LoginResponse, LogoutResponse } from './dto/login.input';
 import { CurrentUser } from '@aafiyah/common';
 import { UserWithoutPassword } from '../users/entities/user.entity';
-import { Res, UseGuards } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
 import { LocalAuthGuard } from './guards/local.guard';
 import { SessionAuthGuard } from './guards/session.guard';
 import { AuthenticatedGuard } from './guards/authenticated.guard';
