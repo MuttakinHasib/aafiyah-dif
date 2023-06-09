@@ -16,3 +16,10 @@ export class LoginResponse {
   @Field()
   user: UserWithoutPassword;
 }
+
+@ObjectType()
+export class LogoutResponse extends PickType(
+  LoginResponse,
+  ['message'],
+  ObjectType
+) {}

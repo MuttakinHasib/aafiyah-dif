@@ -1,3 +1,4 @@
+import { useProfileQuery } from '@aafiyah/graphql';
 import { Menu, Transition } from '@headlessui/react';
 import {
   ShoppingBagIcon,
@@ -7,8 +8,12 @@ import {
   ArrowRightOnRectangleIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { useAuth } from '../../hooks';
 
 const TopBar = () => {
+  const { data } = useProfileQuery();
+  const { logout } = useAuth();
+
   return (
     <div className="py-4 shadow-sm bg-white">
       {/* logo */}
@@ -203,12 +208,12 @@ const TopBar = () => {
                         )}
                       </Menu.Item>
                     </div>
-                    {false && (
+                    {data?.me && (
                       <Menu.Item>
                         {({ active }) => (
                           <button
                             className="group hover:bg-gray-100 text-gray-600 flex items-center w-full px-3 py-2 text-sm transition duration-300"
-                            // onClick={() => dispatch(logout())}
+                            onClick={logout}
                           >
                             <ArrowRightOnRectangleIcon
                               className="w-5 h-5 mr-2"

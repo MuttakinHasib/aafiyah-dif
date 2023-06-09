@@ -29,10 +29,15 @@ type LoginResponse {
   user: UserWithoutPassword!
 }
 
+type LogoutResponse {
+  message: String!
+}
+
 type Mutation {
   createProduct(createProductInput: CreateProductInput!): Product!
   createUser(createUserInput: CreateUserInput!): String!
   login(loginInput: LoginInput!): LoginResponse!
+  logout: LogoutResponse!
   removeProduct(id: Int!): Product!
   removeUser(id: Int!): User!
   updateProduct(updateProductInput: UpdateProductInput!): Product!
@@ -45,12 +50,11 @@ type Product {
 }
 
 type Query {
-  logout: String!
+  me: UserWithoutPassword!
   product(id: Int!): Product!
   products: [Product!]!
   user(id: Int!): User!
   users: [User!]!
-  whoAmI: UserWithoutPassword!
 }
 
 input UpdateProductInput {

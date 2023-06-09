@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { statics } from '../../configs';
+import { useProfileQuery } from '@aafiyah/graphql';
 const { categories, navLinks } = statics;
 
 const NavBar = () => {
-  const user: any = {};
+  const {data} = useProfileQuery()
   return (
     <nav className="hidden md:block bg-gray-800">
       <div className="container flex items-center">
@@ -57,17 +58,17 @@ const NavBar = () => {
               </Link>
             ))}
           </div>
-          {false ? (
+          {data?.me ? (
             <button className="flex items-center gap-3 focus:outline-none group transition">
               <div className="border-2 border-white border-dashed p-1 rounded-full">
                 <img
-                  src={user.avatar}
+                  src={data.me.avatar}
                   alt=""
                   className="rounded-full w-8 h-8"
                 />
               </div>
               <h3 className="group-hover:text-white text-base font-medium text-gray-200 transition">
-                {user.name}
+                {data.me.name}
               </h3>
             </button>
           ) : (

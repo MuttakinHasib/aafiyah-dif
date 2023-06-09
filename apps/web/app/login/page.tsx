@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useAuth } from '../../hooks/auth/useAuth';
+import { useAuth } from '../hooks/auth/useAuth';
 
 const LoginScreen = () => {
   const { register, login } = useAuth();

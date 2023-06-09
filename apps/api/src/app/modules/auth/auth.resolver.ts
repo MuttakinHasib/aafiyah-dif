@@ -1,8 +1,15 @@
-import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
-import { LoginInput, LoginResponse } from './dto/login.input';
+import {
+  Resolver,
+  Mutation,
+  Args,
+  Query,
+  Context,
+  GqlContextType,
+} from '@nestjs/graphql';
+import { LoginInput, LoginResponse, LogoutResponse } from './dto/login.input';
 import { CurrentUser } from '@aafiyah/common';
 import { UserWithoutPassword } from '../users/entities/user.entity';
-import { UseGuards } from '@nestjs/common';
+import { Res, UseGuards } from '@nestjs/common';
 import { LocalAuthGuard } from './guards/local.guard';
 import { SessionAuthGuard } from './guards/session.guard';
 import { AuthenticatedGuard } from './guards/authenticated.guard';
@@ -22,13 +29,13 @@ export class AuthResolver {
 
   @Query(() => UserWithoutPassword)
   @UseGuards(AuthenticatedGuard)
-  whoAmI(@CurrentUser() user: UserWithoutPassword) {
+  me(@CurrentUser() user: UserWithoutPassword) {
     return user;
   }
 
   @UseGuards(Logout)
-  @Query(() => String, { name: 'logout' })
+  @Mutation(() => LogoutResponse, { name: 'logout' })
   async logout() {
-    return 'Logout Success';
+    return { message: 'Logout Success' };
   }
 }

@@ -1,10 +1,13 @@
 import {
   CreateUserInput,
   useLoginMutation,
+  useProfileQuery,
   useRegisterMutation,
 } from '@aafiyah/graphql';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import getQueryClient from '../../utils/getQueryClient';
+
 export const useAuth = () => {
   const { mutateAsync: registerMutation } = useRegisterMutation();
   const { mutateAsync: loginMutation } = useLoginMutation();
@@ -33,7 +36,10 @@ export const useAuth = () => {
     try {
       toast.promise(loginMutation({ loginInput: data }), {
         loading: 'Logging in...',
-        success: ({ login: { message } }) => <b>{message}</b>,
+        success: ({ login: { message } }) => {
+          getQueryClient().invalidateQueries(useProfileQuery.getKey());
+          return <b>{message}</b>;
+        },
         error: 'Failed to Login!',
       });
     } catch (error) {

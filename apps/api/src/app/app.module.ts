@@ -33,6 +33,7 @@ import { join } from 'path';
             'request.credentials': 'include',
           },
         },
+        context: ({ req, res }) => ({ req, res }),
         // cors: {
         //   credentials: true,
         //   origin: [configurationService.WEB_URL],

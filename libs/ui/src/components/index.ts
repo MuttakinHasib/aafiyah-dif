@@ -1,3 +1,5 @@
 export * from './slider'
 export * from './header'
 export * from './bread-crumbs'
+export * from './active-link'
+export * from './sidebar'
