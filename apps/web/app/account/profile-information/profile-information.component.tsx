@@ -1,11 +1,11 @@
 'use client';
 import { useProfile } from '@aafiyah/client';
-import { PencilIcon } from '@heroicons/react/24/outline';
+import { PencilIcon, PlusIcon, UserIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
 import { Button } from '@aafiyah/ui';
 
 const ProfileInformation = () => {
-  const { register, updateProfile } = useProfile();
+  const { register, updateProfile, getValues } = useProfile();
   const [isDisabled, setIsDisabled] = useState(true);
 
   return (
@@ -25,6 +25,28 @@ const ProfileInformation = () => {
         )}
       </div>
       <form onSubmit={updateProfile} className="space-y-5">
+        <div className="relative block rounded-full group h-36 w-36">
+          <label
+            htmlFor="avatar"
+            className="absolute z-10 flex items-center justify-center w-10 h-10 text-white transition-all duration-300 border-black rounded-full cursor-pointer bg-white -top-1 right-2 group-hover:scale-110 group-hover:text-white"
+          >
+            <PencilIcon className="w-5 h-5 text-black" />
+          </label>
+          <input
+            type="file"
+            id="avatar"
+            name="avatar"
+            accept="image/*"
+            className="hidden"
+          />
+          <div className="relative flex items-center justify-center overflow-hidden border-2 border-dashed rounded-full h-36 w-36 hover:bg-pink-50/30 hover:border-pink-100">
+            {getValues('avatar') ? (
+              <img alt="" src={getValues('avatar')} />
+            ) : (
+              <UserIcon className="w-8 h-8" />
+            )}
+          </div>
+        </div>
         <div className="flex flex-col md:flex-row items-center gap-5">
           <div className="w-full">
             <label htmlFor="name" className="text-gray-600 mb-2 block">

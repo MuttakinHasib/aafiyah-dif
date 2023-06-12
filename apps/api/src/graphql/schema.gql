@@ -42,6 +42,7 @@ type Mutation {
   removeUser(id: Int!): User!
   updateProduct(updateProductInput: UpdateProductInput!): Product!
   updateUser(updateUserInput: UpdateUserInput!): String!
+  uploadSingleFile(file: Upload!): UploadResponse!
 }
 
 type Product {
@@ -75,6 +76,30 @@ input UpdateUserInput {
   phone: String
   role: String
   updated_at: DateTime
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadResponse {
+  access_mode: String!
+  bytes: Float!
+  created_at: String!
+  etag: String!
+  format: String!
+  height: Float!
+  original_filename: String!
+  pages: Float!
+  placeholder: Boolean!
+  public_id: String!
+  resource_type: String!
+  secure_url: String!
+  signature: String!
+  tags: [String!]!
+  type: String!
+  url: String!
+  version: Float!
+  width: Float!
 }
 
 type User {

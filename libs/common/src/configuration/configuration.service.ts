@@ -20,4 +20,16 @@ export class ConfigurationService {
   get SESSION_SECRET_KEY() {
     return this.configService.get<string>('SESSION_SECRET_KEY');
   }
+
+  get CLOUDINARY_CLOUD_NAME() {
+    return this.configService.get<string>('CLOUDINARY_CLOUD_NAME');
+  }
+
+  get CLOUDINARY_API_KEY() {
+    return this.configService.get<string>('CLOUDINARY_API_KEY');
+  }
+
+  get CLOUDINARY_API_SECRET() {
+    return this.configService.get<string>('CLOUDINARY_API_SECRET');
+  }
 }

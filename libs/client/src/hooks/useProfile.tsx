@@ -1,7 +1,11 @@
 'use client';
 import { pick } from 'lodash';
 import moment from 'moment';
-import { UserWithoutPassword, useMeQuery, useUpdateUserMutation } from '@aafiyah/graphql';
+import {
+  UserWithoutPassword,
+  useMeQuery,
+  useUpdateUserMutation,
+} from '@aafiyah/graphql';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
@@ -15,9 +19,13 @@ export const useProfile = () => {
   const {
     register,
     handleSubmit,
+    getValues,
+    watch,
     reset,
     formState: { errors },
   } = useForm({ mode: 'all' });
+
+  watch(['avatar']);
 
   useEffect(() => {
     if (data?.me) {
@@ -51,5 +59,5 @@ export const useProfile = () => {
     }
   });
 
-  return { register, updateProfile, errors };
+  return { register, updateProfile, errors,getValues };
 };
