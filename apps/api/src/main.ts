@@ -6,8 +6,6 @@ import PostgresStore from 'connect-pg-simple';
 import { AppModule } from './app/app.module';
 import { ConfigurationService } from '@aafiyah/common';
 import 'colors';
-import { NextFn } from '@nestjs/graphql';
-import { graphqlUploadExpress } from 'graphql-upload-minimal';
 
 const pgSession = PostgresStore(session);
 
@@ -42,7 +40,7 @@ async function bootstrap() {
   );
 
   // only using graphql
-  app.use((req: any, res: any, next: NextFn) => {
+  /*app.use((req: any, res: any, next: NextFn) => {
     if (req.url.includes('/graphql')) {
       // only graphql request
       graphqlUploadExpress({
@@ -53,7 +51,7 @@ async function bootstrap() {
       next();
     }
   });
-
+  */
   app.use(passport.initialize());
   app.use(passport.session());
   const port = process.env.PORT || 3333;

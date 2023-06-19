@@ -1,4 +1,4 @@
-import { Module, Scope } from '@nestjs/common';
+import { Module,  } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
@@ -11,13 +11,13 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
 import { join } from 'path';
 import { UploadModule } from './modules/upload/upload.module';
-import { MorganInterceptor, MorganModule } from 'nest-morgan';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+// import { MorganInterceptor, MorganModule } from 'nest-morgan';
+// import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
     ConfigurationModule,
-    MorganModule,
+    // MorganModule,
     TypeOrmModule.forRootAsync({
       useFactory: async (configurationService: ConfigurationService) => ({
         type: 'postgres',
@@ -52,11 +52,11 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
   controllers: [AppController],
   providers: [
     AppService,
-    {
-      provide: APP_INTERCEPTOR,
-      scope: Scope.REQUEST,
-      useClass: MorganInterceptor('combined'),
-    },
+    // {
+    //   provide: APP_INTERCEPTOR,
+    //   scope: Scope.REQUEST,
+    //   useClass: MorganInterceptor('combined'),
+    // },
   ],
 })
 export class AppModule {}

@@ -6,11 +6,12 @@ import {
   useMeQuery,
   useUpdateUserMutation,
 } from '@aafiyah/graphql';
-import { useEffect } from 'react';
+import { ChangeEvent, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useQueryClient } from '@tanstack/react-query';
 import { useProfileQuery } from './useProfileQuery';
+import { uploadFile } from '../services';
 
 export const useProfile = () => {
   const { data } = useProfileQuery();
@@ -59,5 +60,32 @@ export const useProfile = () => {
     }
   });
 
-  return { register, updateProfile, errors,getValues };
+  const uploadProfilePicture = async (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      toast.promise(uploadFile(formData), {
+        loading: 'Uploading Profile Picture...',
+        success: (data) => {
+          mutateAsync(
+            { updateUserInput: { avatar: data.secure_url } },
+            {
+              onSuccess: async () => {
+                await queryClient.invalidateQueries(useMeQuery.getKey());
+              },
+            }
+          );
+          return <b>Profile picture updated</b>;
+        },
+        error: (data) => <b>{data.message}</b>,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return { register, updateProfile, errors, getValues, uploadProfilePicture };
 };

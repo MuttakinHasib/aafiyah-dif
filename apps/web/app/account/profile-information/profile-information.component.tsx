@@ -1,11 +1,13 @@
 'use client';
 import { useProfile } from '@aafiyah/client';
-import { PencilIcon, PlusIcon, UserIcon } from '@heroicons/react/24/outline';
+import { PencilIcon, UserIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
 import { Button } from '@aafiyah/ui';
+import Image from 'next/image';
 
 const ProfileInformation = () => {
-  const { register, updateProfile, getValues } = useProfile();
+  const { register, updateProfile, getValues, uploadProfilePicture } =
+    useProfile();
   const [isDisabled, setIsDisabled] = useState(true);
 
   return (
@@ -38,10 +40,16 @@ const ProfileInformation = () => {
             name="avatar"
             accept="image/*"
             className="hidden"
+            onChange={uploadProfilePicture}
           />
           <div className="relative flex items-center justify-center overflow-hidden border-2 border-dashed rounded-full h-36 w-36 hover:bg-pink-50/30 hover:border-pink-100">
             {getValues('avatar') ? (
-              <img alt="" src={getValues('avatar')} />
+              <Image
+                alt=""
+                src={getValues('avatar')}
+                fill
+                className="object-cover"
+              />
             ) : (
               <UserIcon className="w-8 h-8" />
             )}
@@ -163,7 +171,15 @@ const ProfileInformation = () => {
             >
               Cancel
             </button>
-            <Button label="Save" type="submit" />
+            <Button
+              label="Save"
+              type="submit"
+              onClick={() =>
+                setTimeout(() => {
+                  setIsDisabled(true);
+                }, 2000)
+              }
+            />
           </div>
         )}
       </form>

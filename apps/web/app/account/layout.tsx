@@ -40,7 +40,7 @@ const AccountLayout = (props: Props) => {
           <div className="flex px-4 py-2 shadow-box items-center justify-between mb-6">
             <div className="flex items-center gap-4">
               <div className="border border-gray-200 p-1 rounded-full">
-                <div className="w-10 h-10 rounded-full relative">
+                <div className="w-10 h-10 rounded-full relative overflow-hidden">
                   {data?.me?.avatar && (
                     <Image
                       src={data?.me.avatar}
