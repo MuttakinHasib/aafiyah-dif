@@ -66,9 +66,10 @@ export const useProfile = () => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append('file', file);
+
     try {
       toast.promise(uploadFile(formData), {
-        loading: 'Uploading Profile Picture...',
+        loading: <b>Uploading Profile Picture...</b>,
         success: (data) => {
           mutateAsync(
             { updateUserInput: { avatar: data.secure_url } },

@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "build:web": "nx build web",
+    "build:api": "nx build api",
+    "start:web": "nx serve web",
+    "start:api": "nx serve api",
     "dev": "nx run-many --target=serve --projects=web,api --parallel",
     "gen:graphql-client": "graphql-codegen --watch"
   },
@@ -73,6 +77,7 @@
     "@graphql-codegen/typescript-react-query": "^4.1.0",
     "@nestjs/schematics": "^9.1.0",
     "@nestjs/testing": "^9.1.1",
+    "@nx-tools/nx-container": "5.0.2",
     "@nx/cypress": "16.3.2",
     "@nx/eslint-plugin": "16.3.2",
     "@nx/jest": "16.3.2",

@@ -34,6 +34,8 @@ export type Scalars = {
   Float: { input: number; output: number };
   /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
   DateTime: { input: any; output: any };
+  /** The `Upload` scalar type represents a file upload. */
+  Upload: { input: any; output: any };
 };
 
 export type CreateProductInput = {
@@ -74,6 +76,7 @@ export type Mutation = {
   removeUser: User;
   updateProduct: Product;
   updateUser: Scalars['String']['output'];
+  uploadSingleFile: UploadResponse;
 };
 
 export type MutationCreateProductArgs = {
@@ -102,6 +105,10 @@ export type MutationUpdateProductArgs = {
 
 export type MutationUpdateUserArgs = {
   updateUserInput: UpdateUserInput;
+};
+
+export type MutationUploadSingleFileArgs = {
+  file: Scalars['Upload']['input'];
 };
 
 export type Product = {
@@ -145,6 +152,28 @@ export type UpdateUserInput = {
   phone?: InputMaybe<Scalars['String']['input']>;
   role?: InputMaybe<Scalars['String']['input']>;
   updated_at?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type UploadResponse = {
+  __typename?: 'UploadResponse';
+  access_mode: Scalars['String']['output'];
+  bytes: Scalars['Float']['output'];
+  created_at: Scalars['String']['output'];
+  etag: Scalars['String']['output'];
+  format: Scalars['String']['output'];
+  height: Scalars['Float']['output'];
+  original_filename: Scalars['String']['output'];
+  pages: Scalars['Float']['output'];
+  placeholder: Scalars['Boolean']['output'];
+  public_id: Scalars['String']['output'];
+  resource_type: Scalars['String']['output'];
+  secure_url: Scalars['String']['output'];
+  signature: Scalars['String']['output'];
+  tags: Array<Scalars['String']['output']>;
+  type: Scalars['String']['output'];
+  url: Scalars['String']['output'];
+  version: Scalars['Float']['output'];
+  width: Scalars['Float']['output'];
 };
 
 export type User = {

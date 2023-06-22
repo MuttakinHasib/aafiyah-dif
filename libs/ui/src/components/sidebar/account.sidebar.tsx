@@ -20,7 +20,7 @@ export const AccountSidebar = () => {
           <ActiveLink href="/account/profile-information">
             Profile Information
           </ActiveLink>
-          <ActiveLink href="/account/manage-address">Manage Address</ActiveLink>
+          <ActiveLink href="/account/manage-addresses">Manage Address</ActiveLink>
           <ActiveLink href="/account/change-password">
             Change Password
           </ActiveLink>

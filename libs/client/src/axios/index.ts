@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import toast from 'react-hot-toast';
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3333',
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://api:3333',
   withCredentials: true,
 });
 

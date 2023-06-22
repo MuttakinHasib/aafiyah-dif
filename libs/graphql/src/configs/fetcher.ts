@@ -4,18 +4,25 @@ export const fetcher = <TData, TVariables>(
   options?: RequestInit['headers']
 ): (() => Promise<TData>) => {
   return async () => {
-    const res = await fetch('http://localhost:3333/graphql', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-        ...options,
-      },
-      body: JSON.stringify({
-        query,
-        variables,
-      }),
-    });
+    const res = await fetch(
+      `${
+        process.env['NX_DOCKER']
+          ? 'http://api:3333'
+          : process.env['NEXT_PUBLIC_API_URL']
+      }/graphql`,
+      {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          ...options,
+        },
+        body: JSON.stringify({
+          query,
+          variables,
+        }),
+      }
+    );
 
     const json = await res.json();
 
