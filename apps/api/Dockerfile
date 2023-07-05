@@ -12,7 +12,7 @@ RUN yarn build:api
 FROM node:lts-alpine as production
 ENV NODE_ENV=production
 
-USER node
+USER nodez
 WORKDIR /app
 
 COPY --from=development /app/dist/api ./

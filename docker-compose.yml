@@ -1,25 +1,11 @@
-version: "3.9"
+version: "3"
 
 services:
-  postgres:
-    image: postgres:latest
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_DB: aafiyah
-    ports:
-      - 5454:5432
-    volumes:
-      - ./postgres-data:/var/lib/postgresql/data
-    networks:
-      - shared-network
-
   api:
     build:
       context: .
       dockerfile: apps/api/Dockerfile
-      target: development
+      target: production
     command: yarn start:api
     volumes:
       - .:/app
@@ -35,7 +21,7 @@ services:
     build:
       context: .
       dockerfile: apps/web/Dockerfile
-      target: development
+      target: production
     command: yarn start:web
     volumes:
       - .:/app
@@ -46,6 +32,23 @@ services:
       - 4200:4200
     networks:
       - shared-network
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: aafiyah
+    ports:
+      - 5454:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - shared-network
+
+volumes:
+  postgres-data:
 
 networks:
   shared-network:
