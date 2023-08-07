@@ -23,8 +23,9 @@ export class ProductsService {
     return await this.productRepository.findOne({where:{id}});
   }
 
-  update(id: string, updateProductInput: UpdateProductInput) {
-    return `This action updates a #${id} product`;
+  async update(updateProductInput: UpdateProductInput) {
+    await this.productRepository.save(updateProductInput);
+    return "Product has been updated successfully!";
   }
 
   remove(id: string) {

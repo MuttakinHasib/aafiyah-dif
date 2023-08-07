@@ -29,10 +29,7 @@ export class ProductsResolver {
   updateProduct(
     @Args('updateProductInput') updateProductInput: UpdateProductInput
   ) {
-    return this.productsService.update(
-      updateProductInput.id,
-      updateProductInput
-    );
+    return this.productsService.update(updateProductInput);
   }
 
   @Mutation(() => Product)
