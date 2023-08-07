@@ -28,7 +28,9 @@ export class ProductsService {
     return "Product has been updated successfully!";
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} product`;
+  async remove(id: string) {
+    await this.productRepository.delete(id);
+
+    return "Product has been deleted!";
   }
 }

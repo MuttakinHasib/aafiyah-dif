@@ -16,24 +16,24 @@ export class ProductsResolver {
   }
 
   @Query(() => [Product], { name: 'products' })
-  findAll() {
-    return this.productsService.findAll();
+  async findAll() {
+    return await this.productsService.findAll();
   }
 
   @Query(() => Product, { name: 'product' })
-  findOne(@Args('id') id: string) {
-    return this.productsService.findOne(id);
+  async findOne(@Args('id') id: string) {
+    return await this.productsService.findOne(id);
   }
 
   @Mutation(() => Product)
-  updateProduct(
+  async updateProduct(
     @Args('updateProductInput') updateProductInput: UpdateProductInput
   ) {
-    return this.productsService.update(updateProductInput);
+    return await this.productsService.update(updateProductInput);
   }
 
   @Mutation(() => Product)
-  removeProduct(@Args('id') id: string) {
-    return this.productsService.remove(id);
+  async removeProduct(@Args('id') id: string) {
+    return await this.productsService.remove(id);
   }
 }
