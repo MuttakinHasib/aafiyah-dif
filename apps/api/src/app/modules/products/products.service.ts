@@ -15,12 +15,12 @@ export class ProductsService {
     return await this.productRepository.save(product);
   }
 
-  findAll() {
-    return `This action returns all products`;
+  async findAll() {
+    return await this.productRepository.find({});
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} product`;
+  async findOne(id: string) {
+    return await this.productRepository.findOne({where:{id}});
   }
 
   update(id: string, updateProductInput: UpdateProductInput) {
